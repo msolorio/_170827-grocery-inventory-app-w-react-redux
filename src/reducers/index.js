@@ -3,7 +3,8 @@ import * as actions from '../actions';
 const initialState = {
   view: 'inventory',
   itemNameInputVal: '',
-  itemAmountInputVal: ''
+  itemAmountInputVal: '',
+  items: []
 }
 
 export const groceryAppReducer = (state=initialState, action) => {
@@ -22,6 +23,17 @@ export const groceryAppReducer = (state=initialState, action) => {
   if (action.type === actions.CHANGE_ITEM_AMOUNT) {
     return Object.assign({}, state, {
       itemAmountInputVal: action.inputVal
+    });
+  }
+
+  if (action.type === actions.SUBMIT_ITEM) {
+    return Object.assign({}, state, {
+      items: [
+        ...state.items, {
+          itemName: action.itemName,
+          itemAmount: action.itemAmount
+        }
+      ]
     });
   }
 

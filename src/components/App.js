@@ -11,14 +11,10 @@ export class App extends Component {
     super(props);
 
     this.toggleView = this.toggleView.bind(this);
-
-    // this.state = {
-    //   currentView: 'inventory'
-    // }
   }
 
   toggleView(viewToShow) {
-    // this.setState({currentView: viewToShow});
+
     this.props.dispatch(toggleView(viewToShow));
   }
 

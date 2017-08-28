@@ -1,16 +1,35 @@
 import React from 'react';
-import {changeItemName, changeItemAmount} from '../actions';
 import {connect} from 'react-redux';
+import {
+  changeItemName,
+  changeItemAmount,
+  submitItem,
+  toggleView
+} from '../actions';
 
 export function AddItem(props) {
+  function onSubmit(e) {
+    e.preventDefault();
+
+    props.dispatch(submitItem(
+      props.itemNameInputVal, props.itemAmountInputVal
+    ));
+
+    props.dispatch(changeItemName(''));
+    props.dispatch(changeItemAmount(''));
+
+    props.dispatch(toggleView('inventory'));
+  }
+
   return (
     <div className="AddItem">
-      <form className="form">
+      <form className="form"
+        onSubmit={onSubmit}>
         <h1 className="headline">Add An Item</h1>
 
         <div className="formGroup">
           <label className="label"
-            for="itemName">Item Name &nbsp;</label>
+            htmlFor="itemName">Item Name &nbsp;</label>
           <input className="input"
             id="itemName"
             onChange={(e) => props.dispatch(changeItemName(e.target.value))}
@@ -19,10 +38,11 @@ export function AddItem(props) {
 
         <div className="formGroup">
           <label className="label"
-            for="itemAmount">Item Amount &nbsp;</label>
+            htmlFor="itemAmount">Item Amount &nbsp;</label>
           <input className="input"
             id="itemAmount"
-            onChange={(e) => props.dispatch(changeItemAmount(e.target.value))}
+            type="number"
+            onChange={(e) => props.dispatch(changeItemAmount(parseInt(e.target.value, 10)))}
             value={props.itemAmountInputVal}/>
         </div>
 

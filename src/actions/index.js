@@ -15,3 +15,10 @@ export const changeItemAmount = (inputVal) => ({
   type: CHANGE_ITEM_AMOUNT,
   inputVal
 });
+
+export const SUBMIT_ITEM = 'SUBMIT_ITEM';
+export const submitItem = (itemName, itemAmount) => ({
+  type: SUBMIT_ITEM,
+  itemName,
+  itemAmount
+});
