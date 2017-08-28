@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {incrementItem, decrementItem} from '../actions';
+import {
+  incrementItem,
+  decrementItem,
+  removeItem
+} from '../actions';
 
 export function Inventory(props) {
   const items = props.items.map((item, index) => {
     return (
       <div className="item" key={index}>
+        <span className="cross"
+          onClick={() => props.dispatch(removeItem(index))}>&#9587;</span>
         <p className="itemName">{item.itemName}</p>
         <div className="amountChanger">
           <span className="incrementor"

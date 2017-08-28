@@ -34,3 +34,9 @@ export const decrementItem = (itemIndex) => ({
   type: DECREMENT_ITEM,
   itemIndex
 });
+
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const removeItem = (itemIndex) => ({
+  type: REMOVE_ITEM,
+  itemIndex
+});

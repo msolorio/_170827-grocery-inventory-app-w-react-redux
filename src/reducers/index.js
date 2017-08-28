@@ -67,5 +67,16 @@ export const groceryAppReducer = (state=initialState, action) => {
 
   }
 
+  if (action.type === actions.REMOVE_ITEM) {
+    const currentItems = state.items;
+    currentItems.splice(action.itemIndex, 1);
+
+    return Object.assign({}, state, {
+      items: [
+        ...currentItems
+      ]
+    });
+  }
+
   return state;
 }
