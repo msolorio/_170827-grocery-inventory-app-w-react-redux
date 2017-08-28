@@ -22,3 +22,15 @@ export const submitItem = (itemName, itemAmount) => ({
   itemName,
   itemAmount
 });
+
+export const INCREMENT_ITEM = 'INCREMENT_ITEM';
+export const incrementItem = (itemIndex) => ({
+  type: INCREMENT_ITEM,
+  itemIndex
+});
+
+export const DECREMENT_ITEM = 'DECREMENT_ITEM';
+export const decrementItem = (itemIndex) => ({
+  type: DECREMENT_ITEM,
+  itemIndex
+});
